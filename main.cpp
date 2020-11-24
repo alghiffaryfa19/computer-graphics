@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
     glutKeyboardFunc(key);
     glutIdleFunc(idle);
 
-    glClearColor(1,1,1,1);
+    glClearColor(50.0f/255.0f, 168.0f/255.0f, 82.0f/255.0f, 1.0);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
