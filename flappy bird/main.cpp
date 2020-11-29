@@ -247,7 +247,7 @@ void display() {
 	glEnd();
 
 	glBegin(GL_QUADS); /*badan 1*/
-		glColor3f(1, 0.498, 0.314); /* coklat*/
+		glColor3f(0.855, 0.647, 0.125); /*goldenrod*/
 		glVertex2f(7, 0);
 		glVertex2f(7, -1);
 		glVertex2f(12, -1);
@@ -255,7 +255,7 @@ void display() {
 	glEnd();
 
     glBegin(GL_QUADS); /*badan 2*/
-		glColor3f(1, 0.498, 0.314); /* coklat*/
+		glColor3f(0.855, 0.647, 0.125); /*goldenrod*/
 		glVertex2f(7, 2);
 		glVertex2f(7, 1);
 		glVertex2f(10, 1);
@@ -263,18 +263,163 @@ void display() {
 	glEnd();
 
 	glBegin(GL_QUADS); /*badan 3*/
-		glColor3f(1, 0.498, 0.314); /* coklat*/
+		glColor3f(0.855, 0.647, 0.125); /*goldenrod*/
 		glVertex2f(5, 1);
 		glVertex2f(5, 0);
 		glVertex2f(11, 0);
 		glVertex2f(11, 1);
 	glEnd();
 
+	glBegin(GL_QUADS); /*sayap1*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(4, 3);
+		glVertex2f(4, 2);
+		glVertex2f(7, 2);
+		glVertex2f(7, 3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap2*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(7, 4);
+		glVertex2f(7, 3);
+		glVertex2f(8, 3);
+		glVertex2f(8, 4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap3*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(4, 4);
+		glVertex2f(4, 3);
+		glVertex2f(3, 3);
+		glVertex2f(3, 4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(9, 5);
+		glVertex2f(11, 5);
+		glVertex2f(11, 2);
+		glVertex2f(9, 2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah2*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(11, 4);
+		glVertex2f(12, 4);
+		glVertex2f(12, 3);
+		glVertex2f(11, 3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah3*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(8, 2);
+		glVertex2f(9, 2);
+		glVertex2f(9, 3);
+		glVertex2f(8, 3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah4*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(8, 8);
+		glVertex2f(10, 8);
+		glVertex2f(10, 5);
+		glVertex2f(8, 5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah5*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(7, 7);
+		glVertex2f(7, 6);
+		glVertex2f(8, 6);
+		glVertex2f(8, 7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap atas*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(4, 3);
+		glVertex2f(7, 3);
+		glVertex2f(7, 6);
+		glVertex2f(4, 6);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap atas2*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(7, 5);
+		glVertex2f(8, 5);
+		glVertex2f(8, 3);
+		glVertex2f(7, 3);
+	glEnd();
+
+    glBegin(GL_QUADS); /*sayap atas3*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(4, 4);
+		glVertex2f(3, 4);
+		glVertex2f(3, 6);
+		glVertex2f(4, 6);
+	glEnd();
+
+    glBegin(GL_QUADS); /*badan atas*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(8, 8);
+		glVertex2f(8, 9);
+		glVertex2f(11, 9);
+		glVertex2f(11, 8);
+	glEnd();
+	glFlush();
+
+	glBegin(GL_QUADS); /*badan atas2*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(6, 7);
+		glVertex2f(6, 8);
+		glVertex2f(8, 8);
+		glVertex2f(8, 7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(12, 9);
+		glVertex2f(12, 4);
+		glVertex2f(14, 4);
+		glVertex2f(14, 9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih2*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(11, 8);
+		glVertex2f(12, 8);
+		glVertex2f(12, 5);
+		glVertex2f(11, 5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih3*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(15, 7);
+		glVertex2f(16, 7);
+		glVertex2f(16, 4);
+		glVertex2f(15, 4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih4*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(15, 8);
+		glVertex2f(14, 8);
+		glVertex2f(14, 7);
+		glVertex2f(15, 7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih5*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(14, 5);
+		glVertex2f(14, 4);
+		glVertex2f(15, 4);
+		glVertex2f(15, 5);
+	glEnd();
+
 	glFlush();
 }
 
 void myinit() {
-	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClearColor(0, 40, 255, 0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(-5.0, 30.0, -5.0, 30.0);
