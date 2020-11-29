@@ -419,7 +419,7 @@ void display() {
 }
 
 void myinit() {
-	glClearColor(62, 0, 100, 0);
+    glClearColor(50.0f/255.0f, 168.0f/255.0f, 82.0f/255.0f, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(-5.0, 30.0, -5.0, 30.0);
