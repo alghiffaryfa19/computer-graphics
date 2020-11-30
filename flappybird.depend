@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1606655355 source:/Volumes/Fauzan/TUGASKULIAH/Grafkom/PULL GITHUB/computer-graphics/main.cpp
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdlib.h>
+
+1606655679 source:/Volumes/Fauzan/TUGASKULIAH/Grafkom/PULLGITHUB/computer-graphics/main.cpp
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<ctime>
+	<list>
+	<vector>
+	<string>
+	<sstream>
+	"mapstrip.h"
+
+1606655707 /Volumes/Fauzan/TUGASKULIAH/Grafkom/PULLGITHUB/computer-graphics/mapstrip.h
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdlib.h>
+	"tiles.h"
+
+1606655716 /Volumes/Fauzan/TUGASKULIAH/Grafkom/PULLGITHUB/computer-graphics/tiles.h
+	<cstdlib>
+	<cmath>
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdlib.h>
+
