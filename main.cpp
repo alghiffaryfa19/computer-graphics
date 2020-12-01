@@ -1,17 +1,3 @@
-/*
- * GLUT Shapes Demo
- *
- * Written by Nigel Stewart November 2003
- *
- * This program is test harness for the sphere, cone
- * and torus shapes in GLUT.
- *
- * Spinning wireframe and smooth shaded shapes are
- * displayed until the ESC or q key is pressed.  The
- * number of geometry stacks and slices can be adjusted
- * using the + and - keys.
- */
-
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -22,7 +8,7 @@
 #include <stdlib.h>
 
  
-// Math defines
+
 #ifndef M_PI
   #define M_PI 3.14159265358979323846
 #endif
@@ -30,25 +16,25 @@
 #define RAD2DEG 180.0/M_PI
 #define DEG2RAD M_PI/180.0
  
-// Keyboard defines
+
 #define KEY_ESCAPE 27
  
-// Keyboard arrows
+
 #define KEY_UP 101
 #define KEY_DOWN 103
 #define KEY_LEFT 100
 #define KEY_RIGHT 102
  
-// 2D function defines, as 3D is not needed
+
 #define myTranslate2D(x,y) glTranslated(x, y, 0.0)
 #define myScale2D(x,y) glScalef(x, y, 1.0)
 #define myRotate2D(angle) glRotatef(RAD2DEG*angle, 0.0, 0.0, 1.0)
  
-// Various game defines
+
 #define MAX_ACC_PLAYER  0.15
 #define MAX_VELO_PLAYER 2
  
-/* -- type definitions ------------------------------------------------------ */
+
 typedef struct {
     int width;
         int height;
@@ -67,33 +53,33 @@ typedef struct {
     double  x, y, phi, dx, dy, vmax, vmax2, radius;
 } Player;
  
-/* -- function prototypes --------------------------------------------------- */
+
  
 static void initialize ();
  
-// Keyboard
+
 void keyboard (unsigned char, int, int);
 void keyPress (int, int, int);
 void keyRelease (int, int, int);
  
 void myTimer (int);
  
-// Player
+
 void drawPlayer (Player *p);
 void movePlayer ();
 void checkMapBoundries ();
  
-// Display
+
 void display ();
 void myReshape (int, int);
  
 void setWindowValues ();
  
-/* -- global variables ------------------------------------------------------ */
+
  
 static glutWindow win;
  
-// State of cursor keys
+
 static int up = 0;
 static int down = 0;
 static int left = 0;
@@ -104,7 +90,7 @@ static double y2;
 static Player player;
 static Coords coords;
  
-/* -- functions ------------------------------------------------------------- */
+
  
 int main (int argc, char **argv) {
  
@@ -112,37 +98,31 @@ int main (int argc, char **argv) {
  
     srand((unsigned int) time(NULL));
  
-    // initialize and run program
-    glutInit(&argc, argv);  // GLUT initialization
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );  // Display Mode
-    glutInitWindowSize(win.width, win.height); // set window size
-    glutCreateWindow(win.title); // create Window
-    glutDisplayFunc(display); // register Display Function
-    glutIdleFunc(display); // register Idle Function
+    
+    glutInit(&argc, argv);  
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );  
+    glutInitWindowSize(win.width, win.height); 
+    glutCreateWindow(win.title); 
+    glutDisplayFunc(display); 
+    glutIdleFunc(display); 
  
-    // Keyboard
+    
     glutIgnoreKeyRepeat(1);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(keyPress);
-    glutSpecialUpFunc(keyRelease); // register Keyboard Handler
+    glutSpecialUpFunc(keyRelease); 
  
     glutReshapeFunc(myReshape);
     glutTimerFunc(33, myTimer, 0);
  
     initialize();
  
-    glutMainLoop(); // run GLUT mainloop
+    glutMainLoop(); 
  
     return 0;
 }
  
 static void initialize () {
- 
-    /** PLAYER
-     * set parameters including the numbers photons present,
-     * the maximum velocity of the player, the velocity of the laser shots, the
-     * player's coordinates and velocity, etc.
-     */
     player.x = 50.0;
     player.y = 50.0;
     player.dx = player. dy = 0;
@@ -155,7 +135,7 @@ void keyboard ( unsigned char key, int mousePositionX, int mousePositionY ) {
  
     switch (key) {
  
-        // Quits game
+        
         case KEY_ESCAPE:
             exit (0);
             break;
@@ -165,10 +145,7 @@ void keyboard ( unsigned char key, int mousePositionX, int mousePositionY ) {
     }
 }
  
-/**
- *  This function is called when a special key is pressed; we are
- *  interested in the cursor keys only
- */
+
 void keyPress (int key, int x, int y) {
  
     switch (key) {
@@ -193,10 +170,7 @@ void keyPress (int key, int x, int y) {
     }
 }
  
-/**
- *  This function is called when a special key is released; we are
- *  interested in the cursor keys only
- */
+
 void keyRelease (int key, int x, int y) {
  
     switch (key) {
@@ -221,49 +195,47 @@ void keyRelease (int key, int x, int y) {
     }
 }
  
-/**
- * Update
- */
+
 void myTimer (int value) {
  
     movePlayer();
     checkMapBoundries();
  
     glutPostRedisplay();
-    glutTimerFunc(33, myTimer, value);      /* 30 frames per second */
+    glutTimerFunc(33, myTimer, value);      
  
 }
  
 void movePlayer () {
  
-     // Player Rotation
+     
     if(left && right) {
-        //do nothing
+        
     }
     else if(left == 1) {
-        player.phi = player.phi + DEG2RAD * 11.5; //Larger the number the faster it will rotate
+        player.phi = player.phi + DEG2RAD * 11.5; 
     }
     else if(right == 1) {
         player.phi = player.phi - DEG2RAD * 11.5;
     }
  
-    // Player Movement
+    
     if(up && down) {
-        // stop player
+        
         player.dx = 0.0;
         player.dy = 0.0;
     }
-    // Moves player forwards
+    
     else if(up == 1) {
         player.dx = player.dx - MAX_ACC_PLAYER * sin(player.phi);
         player.dy = player.dy + MAX_ACC_PLAYER * cos(player.phi);
     }
-    // Moves player backwards
+    
     else if(down == 1) {
         player.dx = player.dx + (MAX_ACC_PLAYER - 0.09) * sin(player.phi);
         player.dy = player.dy - (MAX_ACC_PLAYER - 0.09) * cos(player.phi);
     }
-    // Slows player down when up && down movement keys are not pressed
+    
     else if (up == 0 && down == 0) {
  
         if (player.dx > 0) {
@@ -281,28 +253,26 @@ void movePlayer () {
     }
  
     double temp;
-    //If the player exceeds the max velocity (moving backwards), limit the velocity
+    
     if(down == 1 && (temp = (player.dx * player.dx + player.dy * player.dy)) > (player.vmax)) {
         temp = player.vmax / sqrt(temp);
         player.dx *= temp - 0.5;
         player.dy *= temp - 0.5;
     }
-     //If the player exceeds the max velocity (moving forwards), limit the velocity
+     
     else if((temp = (player.dx * player.dx + player.dy * player.dy)) > player.vmax2) {
         temp = player.vmax / sqrt(temp);
         player.dx *= temp;
         player.dy *= temp;
     }
  
-    // Puts the math in motion
+    
     player.x = player.x + player.dx;
     player.y = player.y + player.dy;
  
-} // end movePlayer()
+} 
  
-/**
- * Map boundaries - prevents player from going out of designated map area
- */
+
 void checkMapBoundries () {
  
     if(player.x > win.width) {
@@ -319,13 +289,10 @@ void checkMapBoundries () {
     }
 }
  
-/**
- * The display callback handles exposure events and is called whenever the display must be refreshed.
- * Values can be passed to the display callback function only by means of global variables.
- */
+
 void display () {
  
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen and Depth Buffer
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
     glLoadIdentity();
     glTranslatef(0.0f,0.0f,-3.0f);
  
@@ -334,34 +301,29 @@ void display () {
     glutSwapBuffers();
 }
  
-/**
- *  reshape callback function; the aspect ratio is
- *  determined by the aspect ratio of the viewport
- */
+
 void myReshape (int w, int h) {
  
-    glMatrixMode(GL_PROJECTION); // select projection matrix
-    glViewport(0, 0, win.width, win.height); // set the viewport
-    glMatrixMode(GL_PROJECTION);  // set matrix mode
-    glLoadIdentity(); // reset projection matrix
-    //GLfloat aspect = (GLfloat) win.width / win.height;
+    glMatrixMode(GL_PROJECTION); 
+    glViewport(0, 0, win.width, win.height); 
+    glMatrixMode(GL_PROJECTION);  
+    glLoadIdentity(); 
+    
  
     glOrtho(0.0, win.width, 0.0, win.height, win.z_near, win.z_far);
-    //gluPerspective(win.field_of_view_angle, aspect, win.z_near, win.z_far);  // set up a perspective projection matrix
+    
  
-    glMatrixMode(GL_MODELVIEW); // specify which matrix is the current matrix
+    glMatrixMode(GL_MODELVIEW); 
     glShadeModel( GL_SMOOTH );
     glClearDepth( 1.0f );                                                                                                               // specify the clear value for the depth buffer
     glEnable( GL_DEPTH_TEST );
     glDepthFunc( GL_LEQUAL );
-    glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST ); // specify implementation-specific hints
-    glClearColor(0.0, 0.0, 0.02, 1.0); // specify clear values for the color buffers
+    glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST ); 
+    glClearColor(0.0, 0.0, 0.02, 1.0); 
  
 }
  
-/**
- * Sets game window specifications
- */
+
 void setWindowValues () {
  
     win.width = 640;
@@ -372,7 +334,7 @@ void setWindowValues () {
     win.z_far = 100.0f;
 }
  
-/* -- drawing functions ----------------------------------------------------- */
+
  
 void drawPlayer (Player *p) {
  
