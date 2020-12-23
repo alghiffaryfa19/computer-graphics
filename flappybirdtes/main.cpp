@@ -16,6 +16,7 @@ void initGrid(int ,int );
 void drawBall();
 void drawBars();
 void random(int &);
+int angle;
 
 int prev_num=-1;
 int gridX;
@@ -31,6 +32,437 @@ int posX=12,posY=30;
 int posBarX[NOB]={55,110,165,220,275,330,385,430,485,530};
 int posBarY[NOB]={24,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
+float horizontalMove;
+float verticalMove;
+
+// Collider
+float posisiX[2] = {0, 10};
+float posisiY[2] = {0, 10};
+
+void karakter() {
+
+
+	glBegin(GL_POLYGON); /*garis 1*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+8, posY+10);
+		glVertex2f(posX+8, posY+9);
+		glVertex2f(posX+14, posY+9);
+		glVertex2f(posX+14, posY+10);
+
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 2*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+8, posY+9);
+		glVertex2f(posX+8, posY+8);
+		glVertex2f(posX+6, posY+8);
+		glVertex2f(posX+6, posY+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 3*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+6, posY+8);
+		glVertex2f(posX+6, posY+7);
+		glVertex2f(posX+5, posY+7);
+		glVertex2f(posX+5, posY+8);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 4*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+7, posY+7);
+		glVertex2f(posX+7, posY+6);
+		glVertex2f(posX+3, posY+6);
+		glVertex2f(posX+3, posY+7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 5*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+3, posY+6);
+		glVertex2f(posX+3, posY+3);
+		glVertex2f(posX+2, posY+3);
+		glVertex2f(posX+2, posY+6);
+	glEnd();
+
+    glBegin(GL_QUADS); /*garis 6*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+4, posY+3);
+		glVertex2f(posX+4, posY+2);
+		glVertex2f(posX+3, posY+2);
+		glVertex2f(posX+3, posY+3);
+	glEnd();
+
+	glBegin(GL_POLYGON); /*garis 7*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+4, posY+2);
+		glVertex2f(posX+7, posY+2);
+		glVertex2f(posX+7, posY+1);
+		glVertex2f(posX+5, posY+1);
+		glVertex2f(posX+5, posY+0);
+		glVertex2f(posX+4, posY+0);
+	glEnd();
+
+    glBegin(GL_QUADS); /*garis 8*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+7, posY+0);
+		glVertex2f(posX+7, posY-1);
+		glVertex2f(posX+5, posY-1);
+		glVertex2f(posX+5, posY+0);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 9*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+7, posY-1);
+		glVertex2f(posX+7, posY-2);
+		glVertex2f(posX+12, posY-2);
+		glVertex2f(posX+12, posY-1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 10*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+12, posY+0);
+		glVertex2f(posX+12, posY-1);
+		glVertex2f(posX+17, posY-1);
+		glVertex2f(posX+17, posY+0);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 11*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+18, posY+0);
+		glVertex2f(posX+17, posY+0);
+		glVertex2f(posX+17, posY+1);
+		glVertex2f(posX+18, posY+1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 12*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+12, posY+1);
+		glVertex2f(posX+18, posY+1);
+		glVertex2f(posX+18, posY+2);
+		glVertex2f(posX+12, posY+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 13*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+18, posY+2);
+		glVertex2f(posX+19, posY+2);
+		glVertex2f(posX+19, posY+3);
+		glVertex2f(posX+18, posY+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 14*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+12, posY+2);
+		glVertex2f(posX+12, posY+3);
+		glVertex2f(posX+11, posY+3);
+		glVertex2f(posX+11, posY+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 15*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+11, posY+2);
+		glVertex2f(posX+10, posY+2);
+		glVertex2f(posX+10, posY+1);
+		glVertex2f(posX+11, posY+1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 16*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+11, posY+1);
+		glVertex2f(posX+12, posY+1);
+		glVertex2f(posX+12, posY+0);
+		glVertex2f(posX+11, posY+0);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 17*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+12, posY+3);
+		glVertex2f(posX+18, posY+3);
+		glVertex2f(posX+18, posY+4);
+		glVertex2f(posX+12, posY+4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 18*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+16, posY+4);
+		glVertex2f(posX+17, posY+4);
+		glVertex2f(posX+17, posY+7);
+		glVertex2f(posX+16, posY+7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 19*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+16, posY+7);
+		glVertex2f(posX+15, posY+7);
+		glVertex2f(posX+15, posY+8);
+		glVertex2f(posX+16, posY+8);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 20*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+15, posY+8);
+		glVertex2f(posX+14, posY+8);
+		glVertex2f(posX+14, posY+9);
+		glVertex2f(posX+15, posY+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 21*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+11, posY+9);
+		glVertex2f(posX+12, posY+9);
+		glVertex2f(posX+12, posY+8);
+		glVertex2f(posX+11, posY+8);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 22*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+10, posY+8);
+		glVertex2f(posX+11, posY+8);
+		glVertex2f(posX+11, posY+5);
+		glVertex2f(posX+10, posY+5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 23*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+11, posY+5);
+		glVertex2f(posX+12, posY+5);
+		glVertex2f(posX+12, posY+4);
+		glVertex2f(posX+11, posY+4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 24*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+7, posY+6);
+		glVertex2f(posX+8, posY+6);
+		glVertex2f(posX+8, posY+5);
+		glVertex2f(posX+7, posY+5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 25*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+8, posY+3);
+		glVertex2f(posX+9, posY+3);
+		glVertex2f(posX+9, posY+5);
+		glVertex2f(posX+8, posY+5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*garis 26*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+7, posY+3);
+		glVertex2f(posX+8, posY+3);
+		glVertex2f(posX+8, posY+2);
+		glVertex2f(posX+7, posY+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata*/
+		glColor3f(0.0, 0.0, 0.0);
+		glVertex2f(posX+14, posY+7);
+		glVertex2f(posX+15, posY+7);
+		glVertex2f(posX+15, posY+5);
+		glVertex2f(posX+14, posY+5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mulut atas*/
+		glColor3f(1, 0.549, 0); /*oren*/
+		glVertex2f(posX+12, posY+3);
+		glVertex2f(posX+12, posY+2);
+		glVertex2f(posX+18, posY+2);
+		glVertex2f(posX+18, posY+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mulut bawah*/
+		glColor3f(1, 0.549, 0); /*oren*/
+		glVertex2f(posX+12, posY+1);
+		glVertex2f(posX+12, posY+0);
+		glVertex2f(posX+17, posY+0);
+		glVertex2f(posX+17, posY+1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mulut tengah*/
+		glColor3f(1, 0.549, 0); /*oren*/
+		glVertex2f(posX+11, posY+2);
+		glVertex2f(posX+12, posY+2);
+		glVertex2f(posX+12, posY+1);
+		glVertex2f(posX+11, posY+1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan 1*/
+		glColor3f(0.855, 0.647, 0.125); /*goldenrod*/
+		glVertex2f(posX+7, posY+0);
+		glVertex2f(posX+7, posY-1);
+		glVertex2f(posX+12, posY-1);
+		glVertex2f(posX+12, posY+0);
+	glEnd();
+
+    glBegin(GL_QUADS); /*badan 2*/
+		glColor3f(0.855, 0.647, 0.125); /*goldenrod*/
+		glVertex2f(posX+7, posY+2);
+		glVertex2f(posX+7, posY+1);
+		glVertex2f(posX+10, posY+1);
+		glVertex2f(posX+10, posY+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan 3*/
+		glColor3f(0.855, 0.647, 0.125); /*goldenrod*/
+		glVertex2f(posX+5, posY+1);
+		glVertex2f(posX+5, posY+0);
+		glVertex2f(posX+11, posY+0);
+		glVertex2f(posX+11, posY+1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap1*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+4, posY+3);
+		glVertex2f(posX+4, posY+2);
+		glVertex2f(posX+7, posY+2);
+		glVertex2f(posX+7, posY+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap2*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+7, posY+4);
+		glVertex2f(posX+7, posY+3);
+		glVertex2f(posX+8, posY+3);
+		glVertex2f(posX+8, posY+4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap3*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+4, posY+4);
+		glVertex2f(posX+4, posY+3);
+		glVertex2f(posX+3, posY+3);
+		glVertex2f(posX+3, posY+4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+9, posY+5);
+		glVertex2f(posX+11, posY+5);
+		glVertex2f(posX+11, posY+2);
+		glVertex2f(posX+9, posY+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah2*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+11, posY+4);
+		glVertex2f(posX+12, posY+4);
+		glVertex2f(posX+12, posY+3);
+		glVertex2f(posX+11, posY+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah3*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+8, posY+2);
+		glVertex2f(posX+9, posY+2);
+		glVertex2f(posX+9, posY+3);
+		glVertex2f(posX+8, posY+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah4*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+8, posY+8);
+		glVertex2f(posX+10, posY+8);
+		glVertex2f(posX+10, posY+5);
+		glVertex2f(posX+8, posY+5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan tengah5*/
+		glColor3f(1, 1, 0); /*kuning*/
+		glVertex2f(posX+7, posY+7);
+		glVertex2f(posX+7, posY+6);
+		glVertex2f(posX+8, posY+6);
+		glVertex2f(posX+8, posY+7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap atas*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(posX+4, posY+3);
+		glVertex2f(posX+7, posY+3);
+		glVertex2f(posX+7, posY+6);
+		glVertex2f(posX+4, posY+6);
+	glEnd();
+
+	glBegin(GL_QUADS); /*sayap atas2*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(posX+7, posY+5);
+		glVertex2f(posX+8, posY+5);
+		glVertex2f(posX+8, posY+3);
+		glVertex2f(posX+7, posY+3);
+	glEnd();
+
+    glBegin(GL_QUADS); /*sayap atas3*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(posX+4, posY+4);
+		glVertex2f(posX+3, posY+4);
+		glVertex2f(posX+3, posY+6);
+		glVertex2f(posX+4, posY+6);
+	glEnd();
+
+    glBegin(GL_QUADS); /*badan atas*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(posX+8, posY+8);
+		glVertex2f(posX+8, posY+9);
+		glVertex2f(posX+11, posY+9);
+		glVertex2f(posX+11, posY+8);
+	glEnd();
+	glFlush();
+
+	glBegin(GL_QUADS); /*badan atas2*/
+		glColor3f(1, 0.961, 0.933); /*seashell*/
+		glVertex2f(posX+6, posY+7);
+		glVertex2f(posX+6, posY+8);
+		glVertex2f(posX+8, posY+8);
+		glVertex2f(posX+8, posY+7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(posX+12, posY+9);
+		glVertex2f(posX+12, posY+4);
+		glVertex2f(posX+14, posY+4);
+		glVertex2f(posX+14, posY+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih2*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(posX+11, posY+8);
+		glVertex2f(posX+12, posY+8);
+		glVertex2f(posX+12, posY+5);
+		glVertex2f(posX+11, posY+5);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih3*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(posX+15, posY+7);
+		glVertex2f(posX+16, posY+7);
+		glVertex2f(posX+16, posY+4);
+		glVertex2f(posX+15, posY+4);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih4*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(posX+15, posY+8);
+		glVertex2f(posX+14, posY+8);
+		glVertex2f(posX+14, posY+7);
+		glVertex2f(posX+15, posY+7);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih5*/
+		glColor3f(1, 1, 1); /*putih*/
+		glVertex2f(posX+14, posY+5);
+		glVertex2f(posX+14, posY+4);
+		glVertex2f(posX+15, posY+4);
+		glVertex2f(posX+15, posY+5);
+	glEnd();
+
+	glFlush();
+}
+
+
+
+
+// Menggambar segitiga dengan titik putar berada di tengah object
+
+
 void initGrid(int x,int y)
 {
     gridX=x;
@@ -40,7 +472,7 @@ void initGrid(int x,int y)
 void drawBall()
 {
     glColor3f(0.0,1.0,0.0);
-    glRectf(posX,posY,posX+1,posY+1);
+   karakter();
     if(posY==0 || posY==gridX-1)
     {
         gameOver=true;
@@ -565,7 +997,7 @@ int main(int argc,char **argv)
 {
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-    glutInitWindowSize(1080,720);
+    glutInitWindowSize(1290,720);
     glutInitWindowPosition(350,40);
     glutCreateWindow("FLIP FLOP");
 
