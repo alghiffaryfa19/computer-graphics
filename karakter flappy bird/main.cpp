@@ -1,6 +1,7 @@
 #include<GL/glut.h>
 
 void display() {
+    glScaled(0.1,0.1,0.1);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glBegin(GL_POLYGON); /*garis 1*/
