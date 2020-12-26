@@ -481,6 +481,7 @@ void drawBall()
     {
         gameOver=true;
     }
+
     else if(posX==posBarX[0])
     {
         score++;
@@ -537,6 +538,286 @@ void drawBars()
             posBarY[NOB-1]=num+12;
         change=false;
     }
+}
+
+
+void drawEnemy()
+{
+    srand(time(NULL));
+
+    glColor3f(1.0,0.0,0.0);
+    for(int i=0;i<NOB;i++)
+    {
+        for(int j=posBarY[i]+12;j<gridY;j++)
+        {
+            glBegin(GL_QUADS); /*kepala*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+16);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+15);
+		glVertex2f(posBarX[i]+10+10, posBarY[i]+10+15);
+		glVertex2f(posBarX[i]+10+10, posBarY[i]+10+16);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kepala 2*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+15);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+15);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+13);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kepala 3*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+4, posBarY[i]+10+14);
+		glVertex2f(posBarX[i]+10+4, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+14);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kepala 4*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+14);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+14);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+13);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kepala 5*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+12);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kepala 6*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+13);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki kiri*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+2, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+2, posBarY[i]+10+1);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki kiri2*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+4, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+4, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+3, posBarY[i]+10+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+8);
+	glEnd();
+
+	glBegin(GL_QUADS); /*badan2*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*bagian deket mata*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+10, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+10, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*bagian deket mata2*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+8);
+	glEnd();
+
+	glBegin(GL_QUADS); /*bagian deket mata3*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*bagian deket mata4*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki bawah*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki bawah2*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki bawah3*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki bawah*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki kanan*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+3);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+3);
+	glEnd();
+
+	glBegin(GL_QUADS); /*kaki kanan 2*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+2);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+1);
+		glVertex2f(posBarX[i]+10+15, posBarY[i]+10+2);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata kiri*/
+		glColor3f(0, 0.545, 0.545);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+10);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata kanan*/
+		glColor3f(0, 0.545, 0.545);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+10);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+13);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih2*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+13);
+	glEnd();
+
+    glBegin(GL_QUADS); /*mata putih3*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+5, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih4*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+9, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+7, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih5*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+8, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10, posBarY[i]+10+8);
+	glEnd();
+
+    glBegin(GL_QUADS); /*mata putih6*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10+10, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+10, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+12);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih7*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+10);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+12, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih8*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+9);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+8);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+9);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata putih*/
+		glColor3f(1, 1, 1);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+11, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+13);
+	glEnd();
+
+	glBegin(GL_QUADS); /*mata ujung*/
+		glColor3f(1, 0.647, 0);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+13);
+		glVertex2f(posBarX[i]+10+13, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+12);
+		glVertex2f(posBarX[i]+10+14, posBarY[i]+10+13);
+	glEnd();
+
+    glFlush();
+        }
+    }
+
 }
 
 void random(int &num)
@@ -997,11 +1278,11 @@ int main(int argc,char **argv)
 {
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-    glutInitWindowSize(1290,720);
+    glutInitWindowSize(720,480);
     glutInitWindowPosition(350,40);
     glutCreateWindow("FLIP FLOP");
 
-    glutDisplayFunc(display_callback);
+    glutDisplayFunc(utama);
     glutReshapeFunc(reshape_callback);
     glutTimerFunc(0,timer_callback,0);
     glutSpecialFunc(keyboard_callback);
@@ -1010,21 +1291,22 @@ int main(int argc,char **argv)
 return 0;
 }
 
-void display_callback()
+void utama()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     background();
 //    drawGrid();
     drawBars();
     drawBall();
+    drawEnemy();
     glutSwapBuffers();
     if(gameOver)
     {
         char _score[10];
         itoa(score,_score,10);
-        char text[50]="Your Score: ";
+        char text[50]="Skor Akhir: ";
         strcat(text,_score);
-        MessageBox(NULL,text,"Game Over",0);
+        MessageBox(NULL,text,"Gim Berakhir",0);
         exit(0);
     }
 }
