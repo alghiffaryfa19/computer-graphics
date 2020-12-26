@@ -857,7 +857,7 @@ int score=0;
 extern int posY;
 
 void timer_callback(int);
-void display_callback();
+void utama();
 void reshape_callback(int,int);
 void keyboard_callback(int,int,int);
 
